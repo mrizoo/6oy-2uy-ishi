@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  const cars = [
+    "./assets/bmw.jpg",
+    "./assets/porsche.jpg",
+    "./assets/ry.jpg",
+    "./assets/mustang.jpg",
+  ];
+
+  // for(let i = 0; i<cars.length; i++)
+  // console.log(img);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      {/* <h1>{counter}</h1> */}
+      <img
+        className="img"
+        src={cars[counter]}
+        alt="cars-model"
+        width={600}
+        height={300}
+      />
+      <div className="btn-wrapper">
+        <button
+          className="back"
+          onClick={() => counter > 0 && setCounter(counter - 1)}
         >
-          Learn React
-        </a>
-      </header>
+          Back
+        </button>
+        <button
+          className="next"
+          onClick={() => counter < cars.length - 1 && setCounter(counter + 1)}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
